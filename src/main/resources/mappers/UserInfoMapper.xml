@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.az.todo.dao.mapper.UserInfoMapper">
+    <insert id="saveUserInfo">
+        INSERT INTO user_info (user_name, tel, wxid, ext) VALUES (#{id}, #{userName}, #{tel}, #{wxid}, #{ext})
+    </insert>
+
+    <select id="queryUsersListByWxid" resultType="com.az.todo.dao.entity.UserInfoEntity">
+        SELECT
+            id,
+            user_name,
+            tel,
+            wxid,
+            ext
+        FROM user_info
+        WHERE wxid = #{wxid}
+    </select>
+</mapper>

@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS user_info;
+CREATE TABLE user_info
+(
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  user_name VARCHAR(255) NOT NULL,
+  tel VARCHAR(255),
+  wxid VARCHAR(255),
+  ext VARCHAR(255)
+);
