@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.az.todo.dao.mapper.UserInfoMapper">
-    <insert id="saveUserInfo">
+    <insert id="saveUserInfo" parameterType="com.az.todo.dao.entity.UserInfoEntity" useGeneratedKeys="true"
+            keyProperty="id">
         INSERT INTO user_info (user_name, tel, wxid, ext) VALUES (#{id}, #{userName}, #{tel}, #{wxid}, #{ext})
     </insert>
 

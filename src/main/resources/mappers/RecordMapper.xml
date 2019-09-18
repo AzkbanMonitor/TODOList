@@ -3,4 +3,38 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.az.todo.dao.mapper.RecordMapper">
 
+    <select id="fuzzyQueryRecordListByIdAndKey" resultType="com.az.todo.dao.entity.RecordEntity">
+        <bind name="key" value="'%' + key + '%'"/>
+        SELECT
+        id,
+        title,
+        text,
+        status,
+        user_id
+        FROM record
+        WHERE id = #{id} and (title like #{key} or text like #{key})
+    </select>
+    <insert id="saveRecord" parameterType="com.az.todo.dao.entity.RecordEntity" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO record (title, text, status, user_id) VALUES (#{title}, #{text}, #{status}, #{userId})
+    </insert>
+    <update id="updateRecord">
+        UPDATE record record set
+        <if test="title != null">
+            record.title = #{title}
+        </if>
+        <if test="text !== null">
+            record.text = #{text}
+        </if>
+        <if test="status != null">
+            record.status = #{status}
+        </if>
+        record.id = #{id}
+        WHERE id = #{id}
+    </update>
+    <update id="updateRecordStatus">
+        UPDATE record
+        SET status = #{status}
+        WHERE id = #{id} AND userId = #{userId}
+    </update>
 </mapper>

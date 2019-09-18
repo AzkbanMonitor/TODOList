@@ -1,4 +1,4 @@
-package com.az.todo.dao.entity;
+package com.az.todo.dto;
 
 import com.az.todo.enums.RecordStatus;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RecordEntity {
+public class RecordDto {
     private int id;
 
     private String text;
